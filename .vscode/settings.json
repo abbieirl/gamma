@@ -1,0 +1,12 @@
+{
+    "Lua.diagnostics.globals": [
+        "on_game_start",
+        "RegisterScriptCallback",
+        "on_key_press",
+        "getFS",
+        "FS",
+        "bit_or",
+        "printf",
+        "ui_options",
+    ]
+}

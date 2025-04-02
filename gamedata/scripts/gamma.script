@@ -1,0 +1,45 @@
+local options = require "gamedata\\scripts\\gamma\\options"
+local wasmer = require "gamedata\\scripts\\gamma\\wasmer"
+local ffi = require "ffi"
+
+VERSION = "0.1.0"
+
+local function insert_ui_options()
+    if (#ui_options.options == 0) then
+        ui_options.init_opt_base()
+    end
+
+    for index = 1, #ui_options.options do
+        if ui_options.options[index].id == "other" then
+            table.insert(ui_options.options, index, options)
+            break
+        end
+    end
+end
+
+local function get_wasm_paths()
+    local paths = {}
+    local flist = getFS():file_list_open_ex("$fs_root$\\gamma", bit_or(FS.FS_ListFiles, FS.FS_RootOnly), "*.wasm")
+
+    for index = 0, flist:Size() - 1 do
+        table.insert(paths, flist:getAt(index))
+    end
+
+    return paths
+end
+
+function on_game_start()
+    insert_ui_options()
+
+    local engine = wasmer.wasm_engine_new()
+    local store = wasmer.wasm_store_new(engine)
+
+    local wasm = "TEST"
+    local wasm_bytes = ffi.new("uint8_t[?]", #wasm, wasm)
+    local byteVec = ffi.new("wasm_byte_vec_t")
+    wasmer.wasm_byte_vec_new(byteVec, #wasm, wasm_bytes)
+
+    local module = wasmer.wasm_module_new(store, byteVec)
+
+    local isntance = wasmer.wasm_instance_new()
+end

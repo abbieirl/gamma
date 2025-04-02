@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+    <string id="ui_mm_menu_gamma">
+        <text>Gamma</text>
+    </string>
+    <string id="ui_mm_title_gamma">
+        <text>Gamma Options</text>
+    </string>
+    <string id="ui_mm_gamma_engine">
+        <text>Engine</text>
+    </string>
+</string_table>
