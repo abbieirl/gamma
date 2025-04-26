@@ -69,10 +69,10 @@ ffi.cdef [[
 ---@field wasm_store_new fun(engine: userdata): userdata
 ---@field wasm_store_delete fun(store: userdata)
 ---
----@field wasm_module_new fun(store: userdata, bytes: userdata)
+---@field wasm_module_new fun(store: userdata, bytes: userdata): userdata
 ---@field wasm_module_delete fun(module: userdata)
 ---
----@field wasm_instance_new fun()
+---@field wasm_instance_new fun(): userdata
 ---@field wasm_instance_delete fun(instance: userdata)
 local wasmer = ffi.load("bin/wasmer.dll")
 return wasmer
