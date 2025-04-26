@@ -1,21 +1,18 @@
-local options = require "gamedata\\scripts\\gamma\\options"
-local wasmer = require "gamedata\\scripts\\gamma\\wasmer"
+local options = require "gamedata/scripts/gamma/options"
+local wasmer = require "gamedata/scripts/gamma/wasmer"
 local ffi = require "ffi"
 
-VERSION = "0.1.0"
+VERSION = {
+    MAJOR = 0,
+    MINOR = 1,
+    PATCH = 0,
+}
 
-local function insert_ui_options()
-    if (#ui_options.options == 0) then
-        ui_options.init_opt_base()
+setmetatable(VERSION, {
+    __tostring = function(v)
+        return string.format("%d.%d.%d", v.MAJOR, v.MINOR, v.PATCH)
     end
-
-    for index = 1, #ui_options.options do
-        if ui_options.options[index].id == "other" then
-            table.insert(ui_options.options, index, options)
-            break
-        end
-    end
-end
+})
 
 local function get_wasm_paths()
     local paths = {}
@@ -29,7 +26,7 @@ local function get_wasm_paths()
 end
 
 function on_game_start()
-    insert_ui_options()
+    options.insert()
 
     local engine = wasmer.wasm_engine_new()
     local store = wasmer.wasm_store_new(engine)

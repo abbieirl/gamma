@@ -1,6 +1,3 @@
----@class ffi
----@field cdef string
----@field load fun(path: string): wasmer
 local ffi = require "ffi"
 
 ffi.cdef [[

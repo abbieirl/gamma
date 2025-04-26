@@ -8,5 +8,7 @@
         "bit_or",
         "printf",
         "ui_options",
-    ]
+        "on_xml_read"
+    ],
+    "Lua.runtime.version": "LuaJIT"
 }

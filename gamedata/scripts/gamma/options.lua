@@ -29,4 +29,17 @@ local options = {
     },
 }
 
+function options.insert()
+    if (#ui_options.options == 0) then
+        ui_options.init_opt_base()
+    end
+
+    for index = 1, #ui_options.options do
+        if ui_options.options[index].id == "other" then
+            table.insert(ui_options.options, index, options)
+            break
+        end
+    end
+end
+
 return options
