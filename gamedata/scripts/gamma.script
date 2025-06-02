@@ -37,6 +37,9 @@ function on_game_start()
     wasmer.wasm_byte_vec_new(byteVec, #wasm, wasm_bytes)
 
     local module = wasmer.wasm_module_new(store, byteVec)
+    
+    wasmer.wasm_module_exports()
 
     local isntance = wasmer.wasm_instance_new()
 end
+

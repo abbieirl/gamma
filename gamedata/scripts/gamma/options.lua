@@ -35,6 +35,10 @@ function options.insert()
     end
 
     for index = 1, #ui_options.options do
+        if ui_options.options[index].id == "gamma" then return end
+    end
+
+    for index = 1, #ui_options.options do
         if ui_options.options[index].id == "other" then
             table.insert(ui_options.options, index, options)
             break

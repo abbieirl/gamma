@@ -1,3 +1,5 @@
+local options = require "gamedata/scripts/gamma/options"
+
 function on_xml_read()
-    
+    options.insert()
 end
